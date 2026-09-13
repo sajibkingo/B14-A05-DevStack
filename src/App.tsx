@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import type { ITechnology } from './Types/tecnhologyType';
 import { Footer } from './Components/Footer';
 import { TechnologiesSection } from './Technologies/TechnologiesSection';
 import Nav from './Components/Nav';
 import Banner from './Components/Banner';
+import { toast } from 'react-toastify';
+import { useState } from 'react';
 
 
 const technologyPromise = async (): Promise<ITechnology[]> => {
@@ -78,8 +78,11 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col justify-between bg-[#FAFAFC] text-gray-900 font-sans antialiased">
+      
       <Nav />
+
       <Banner />
+      
       <main className="flex-grow">
         <TechnologiesSection
           technologies={technologies}
@@ -91,18 +94,7 @@ function App() {
       </main>
       
       <Footer />
-      <ToastContainer
-        position="top-right"
-        autoClose={2500}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+      
     </div>
   );
 }

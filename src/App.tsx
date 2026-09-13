@@ -1,12 +1,11 @@
 import 'react-toastify/dist/ReactToastify.css';
-import type { ITechnology } from './Types/tecnhologyType';
-import { Footer } from './Components/Footer';
-import { TechnologiesSection } from './Technologies/TechnologiesSection';
 import Nav from './Components/Nav';
 import Banner from './Components/Banner';
+import type { ITechnology } from './Types/tecnhologyType';
+import { TechnologiesSection } from './Technologies/TechnologiesSection';
+import { Footer } from './Components/Footer';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
-
 
 const technologyPromise = async (): Promise<ITechnology[]> => {
   const res = await fetch('/data.json');
@@ -28,41 +27,25 @@ function App() {
     return initialList;
   });
 
-  const [selectedStack, setSelectedStack] = useState<ITechnology[]>(() => {
-    const saved = localStorage.getItem('user_tech_stack');
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [selectedStack, setSelectedStack] = useState<ITechnology[]>([]);
 
-  const handleToggleTechnology = (tech: ITechnology) => {
+  const handleAddTechnology = (tech: ITechnology) => {
     const isAlreadySelected = selectedStack.some((item) => item.id === tech.id);
 
     if (isAlreadySelected) {
-      const updated = selectedStack.filter((item) => item.id !== tech.id);
-      setSelectedStack(updated);
-      localStorage.setItem('user_tech_stack', JSON.stringify(updated));
-      toast.info(`${tech.name} removed from your stack`);
+      toast.warning(`${tech.name} is already in your stack!`);
       return;
     }
 
-    const categoryExists = selectedStack.some((item) => item.category === tech.category);
-    if (categoryExists) {
-      toast.warning(`Category "${tech.category}" already selected! Replacing...`);
-    }
-
-    const remainingTechs = selectedStack.filter((item) => item.category !== tech.category);
-    const updated = [...remainingTechs, tech];
-    setSelectedStack(updated);
-    localStorage.setItem('user_tech_stack', JSON.stringify(updated));
+    setSelectedStack([...selectedStack, tech]);
     toast.success(`${tech.name} added to your stack!`);
   };
 
   const handleRemoveTech = (id: string) => {
-    const removedItem = selectedStack.find((item) => item.id === id);
-    const updated = selectedStack.filter((item) => item.id !== id);
-    setSelectedStack(updated);
-    localStorage.setItem('user_tech_stack', JSON.stringify(updated));
-    if (removedItem) {
-      toast.info(`${removedItem.name} removed`);
+    const itemToRemove = selectedStack.find((item) => item.id === id);
+    setSelectedStack(selectedStack.filter((item) => item.id !== id));
+    if (itemToRemove) {
+      toast.info(`${itemToRemove.name} removed from your stack`);
     }
   };
 
@@ -72,7 +55,6 @@ function App() {
       return;
     }
     setSelectedStack([]);
-    localStorage.removeItem('user_tech_stack');
     toast.error('All technologies cleared from your stack');
   };
 
@@ -82,19 +64,17 @@ function App() {
       <Nav />
 
       <Banner />
-      
+
       <main className="flex-grow">
         <TechnologiesSection
           technologies={technologies}
           selectedStack={selectedStack}
-          onToggleTechnology={handleToggleTechnology}
+          onAddTechnology={handleAddTechnology}
           onRemoveTech={handleRemoveTech}
           onClearAll={handleClearAll}
         />
       </main>
-      
       <Footer />
-      
     </div>
   );
 }

@@ -5,7 +5,7 @@ import type { ITechnology } from '../Types/tecnhologyType';
 interface TechnologyCardProps {
     technology: ITechnology;
     isSelected: boolean;
-    onToggleSelect: (tech: ITechnology) => void;
+    onAdd: (tech: ITechnology) => void;
 }
 
 const getBadgeStyles = (category: ITechnology['category']): string => {
@@ -32,7 +32,7 @@ const getBadgeStyles = (category: ITechnology['category']): string => {
 export const TechnologyCard: React.FC<TechnologyCardProps> = ({
     technology,
     isSelected,
-    onToggleSelect,
+    onAdd,
 }) => {
     const { name, description, badge, category, difficulty, rating, icon } = technology;
 
@@ -63,14 +63,15 @@ export const TechnologyCard: React.FC<TechnologyCardProps> = ({
             </div>
 
             <button
-                onClick={() => onToggleSelect(technology)}
+                onClick={() => onAdd(technology)}
+                disabled={isSelected}
                 type="button"
                 className={`btn btn-block mt-6 normal-case text-xs font-semibold rounded-xl border transition-all ${isSelected
-                        ? 'btn-outline border-rose-200 text-rose-600 hover:bg-rose-50 hover:border-rose-300'
-                        : 'bg-[#111827] text-white hover:bg-[#1f2937] border-transparent'
+                        ? 'btn-disabled bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed opacity-80'
+                        : 'bg-[#111827] text-white hover:bg-[#1f2937] border-transparent cursor-pointer'
                     }`}
             >
-                {isSelected ? 'Remove from Stack' : 'Add to Stack'}
+                {isSelected ? '✓ Added to Stack' : 'Add to Stack'}
             </button>
         </div>
     );

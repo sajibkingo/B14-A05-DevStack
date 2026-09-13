@@ -13,24 +13,12 @@ export const SelectedStackSidebar: React.FC<SelectedStackSidebarProps> = ({
     onRemoveTech,
     onClearAll,
 }) => {
-    const averageRating = selectedTechs.length
-        ? (
-            selectedTechs.reduce((sum, item) => sum + item.rating, 0) /
-            selectedTechs.length
-        ).toFixed(1)
-        : '0.0';
-
     return (
         <aside className="card bg-base-100 border border-gray-100 p-6 shadow-sm sticky top-6 rounded-2xl">
             <div className="border-b border-gray-100 pb-4 mb-4">
-                <div className="flex items-center justify-between">
-                    <h2 className="text-lg font-bold text-gray-900">Your Stack</h2>
-                    <span className="badge badge-sm badge-neutral font-semibold">
-                        {selectedTechs.length}
-                    </span>
-                </div>
+                <h2 className="text-lg font-bold text-gray-900">Your Stack</h2>
                 <p className="text-xs text-gray-500 mt-1">
-                    Avg. Stack Rating: <span className="font-semibold text-amber-500">★ {averageRating}</span>
+                    {selectedTechs.length} Technology Selected
                 </p>
             </div>
 
@@ -40,7 +28,7 @@ export const SelectedStackSidebar: React.FC<SelectedStackSidebarProps> = ({
                     <p className="text-gray-400 text-xs mt-1">Pick tools to compose your ideal stack.</p>
                 </div>
             ) : (
-                <div className="space-y-3 max-h-[380px] overflow-y-auto pr-1">
+                <div className="flex flex-col gap-3 max-h-[380px] overflow-y-auto pr-1">
                     {selectedTechs.map((tech) => (
                         <div
                             key={tech.id}
@@ -75,7 +63,7 @@ export const SelectedStackSidebar: React.FC<SelectedStackSidebarProps> = ({
                 <button
                     onClick={onClearAll}
                     type="button"
-                    className="btn btn-outline btn-error btn-sm w-full mt-5 normal-case rounded-xl font-semibold"
+                    className="btn btn-outline border-gray-200 hover:bg-rose-50 hover:text-rose-600 hover:border-rose-200 text-gray-600 btn-sm w-full mt-5 normal-case rounded-xl font-semibold"
                 >
                     Remove All
                 </button>

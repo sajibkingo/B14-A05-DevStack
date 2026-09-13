@@ -6,7 +6,7 @@ import type { ITechnology } from '../Types/tecnhologyType';
 interface TechnologiesSectionProps {
     technologies: ITechnology[];
     selectedStack: ITechnology[];
-    onToggleTechnology: (tech: ITechnology) => void;
+    onAddTechnology: (tech: ITechnology) => void;
     onRemoveTech: (id: string) => void;
     onClearAll: () => void;
 }
@@ -14,7 +14,7 @@ interface TechnologiesSectionProps {
 export const TechnologiesSection: React.FC<TechnologiesSectionProps> = ({
     technologies,
     selectedStack,
-    onToggleTechnology,
+    onAddTechnology,
     onRemoveTech,
     onClearAll,
 }) => {
@@ -39,7 +39,7 @@ export const TechnologiesSection: React.FC<TechnologiesSectionProps> = ({
                             key={tech.id}
                             technology={tech}
                             isSelected={selectedStack.some((item) => item.id === tech.id)}
-                            onToggleSelect={onToggleTechnology}
+                            onAdd={onAddTechnology}
                         />
                     ))}
                 </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from "../assets/logo-text.png";
 
 export const Footer: React.FC = () => {
     return (
@@ -6,14 +7,7 @@ export const Footer: React.FC = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
                     <div className="md:col-span-2 space-y-4">
-                        <div className="flex items-center gap-2.5">
-                            <span className="w-7 h-7 bg-purple-600 rounded-lg flex items-center justify-center text-white text-xs font-bold tracking-tight">
-                                DS
-                            </span>
-                            <span className="text-xl font-extrabold tracking-tight">
-                                Dev <span className="text-[#C026D3]">Stack</span>
-                            </span>
-                        </div>
+                        <img src={Logo} alt="DevStack Logo" className="h-8 md:h-10 object-contain" />
 
                         <p className="text-gray-500 text-sm max-w-sm leading-relaxed">
                             Curated tools, technologies, and resources for developers building modern software.

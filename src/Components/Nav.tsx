@@ -18,8 +18,8 @@ const Nav = () => {
                     <button>Sign In</button>
                     <button className="btn btn-secondary rounded-3xl">Sign Up</button>
                 </div>
-
             </div>
+            <div className="divider"></div>
         </nav>
     );
 };

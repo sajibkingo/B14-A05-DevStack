@@ -6,7 +6,7 @@ const Nav = () => {
             <div className="container mx-auto flex justify-between my-4 items-center">
                 <img src={Logo} alt="" />
 
-                <ul className="flex gap-4 items-center">
+                <ul className="flex gap-4 items-center cursor-pointer">
                     <li className="text-[#D91B7E]">Home</li>
                     <li>Technologies</li>
                     <li>Projects</li>
@@ -14,8 +14,8 @@ const Nav = () => {
                     <li>Contact</li>
                 </ul>
 
-                <div className="flex gap-2">
-                    <button>Sign In</button>
+                <div className="flex gap-2 cursor-pointer">
+                    <button className="cursor-pointer">Sign In</button>
                     <button className="btn btn-secondary rounded-3xl">Sign Up</button>
                 </div>
             </div>

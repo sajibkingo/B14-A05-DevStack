@@ -23,7 +23,7 @@ export const TechnologiesSection: React.FC<TechnologiesSectionProps> = ({
             <div className="mb-10">
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
                     Explore the{' '}
-                    <span className="bg-gradient-to-r from-[#FF6B4A] via-[#A855F7] to-[#6366F1] bg-clip-text text-transparent">
+                    <span className="bg-linear-to-r from-[#FF6B4A] via-[#A855F7] to-[#6366F1] bg-clip-text text-transparent">
                         Technologies
                     </span>
                 </h2>

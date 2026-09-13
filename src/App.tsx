@@ -65,7 +65,7 @@ function App() {
 
       <Banner />
 
-      <main className="flex-grow">
+      <main className="grow">
         <TechnologiesSection
           technologies={technologies}
           selectedStack={selectedStack}

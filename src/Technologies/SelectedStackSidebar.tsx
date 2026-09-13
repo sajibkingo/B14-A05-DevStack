@@ -28,7 +28,7 @@ export const SelectedStackSidebar: React.FC<SelectedStackSidebarProps> = ({
                     <p className="text-gray-400 text-xs mt-1">Pick tools to compose your ideal stack.</p>
                 </div>
             ) : (
-                <div className="flex flex-col gap-3 max-h-[380px] overflow-y-auto pr-1">
+                <div className="flex flex-col gap-3 max-h-95 overflow-y-auto pr-1">
                     {selectedTechs.map((tech) => (
                         <div
                             key={tech.id}
@@ -38,7 +38,7 @@ export const SelectedStackSidebar: React.FC<SelectedStackSidebarProps> = ({
                                 <img
                                     src={tech.icon}
                                     alt={tech.name}
-                                    className="w-6 h-6 object-contain flex-shrink-0"
+                                    className="w-6 h-6 object-contain shrink-0"
                                 />
                                 <div className="truncate">
                                     <p className="text-xs font-semibold text-gray-800 truncate">{tech.name}</p>

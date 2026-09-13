@@ -37,7 +37,7 @@ const Banner: React.FC = () => {
                 <img
                     src={BannerLogo}
                     alt="Banner Stack Illustration"
-                    className="w-full h-auto max-h-[380px] lg:max-h-[420px] object-contain"
+                    className="w-full h-auto max-h-95 lg:max-h-105 object-contain"
                 />
             </div>
         </div>
